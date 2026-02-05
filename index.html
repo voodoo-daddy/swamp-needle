@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swamp Needle — New Orleans Vinyl Bar | Irish Channel</title>
+    <meta name="description" content="Tucked away in New Orleans' Irish Channel, Swamp Needle is your secret spot for vinyl listening and craft cocktails. Come for the rare records, stay for the immersive sound.">
+    <meta name="keywords" content="vinyl bar New Orleans, Irish Channel bar, listening room NOLA, craft cocktails, audiophile bar, vinyl lounge">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Swamp Needle — New Orleans Vinyl Bar">
+    <meta property="og:description" content="Vinyl listening bar and cocktail lounge in the Irish Channel.">
+    <meta property="og:type" content="website">
+    
+    <!-- Local Business Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BarOrPub",
+      "name": "Swamp Needle",
+      "description": "Vinyl listening bar and cocktail lounge",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Irish Channel",
+        "addressLocality": "New Orleans",
+        "addressRegion": "LA",
+        "postalCode": "70115",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 29.9323,
+        "longitude": -90.0826
+      },
+      "priceRange": "$$"
+    }
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #000000;
+            --text-light: #ffffff;
+            --text-muted: #cccccc;
+            --accent: #d4af37;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Single Hero Image */
+        .hero-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            opacity: 0;
+            animation: heroFadeIn 1.5s ease forwards;
+        }
+
+        @keyframes heroFadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Dark overlay for readability */
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.6) 100%);
+            pointer-events: none;
+        }
+
+        /* Logo/Title Overlay */
+        .title-overlay {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 20;
+            text-align: center;
+            pointer-events: none;
+            mix-blend-mode: difference;
+        }
+
+        .site-title {
+            font-size: clamp(3rem, 10vw, 8rem);
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            color: var(--text-light);
+            margin: 0;
+            line-height: 1;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            padding: 2rem 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-section {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .nav-section h3 {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            color: var(--text-muted);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            display: inline-block;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .description {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-light);
+            max-width: 500px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hours {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .address {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            font-style: normal;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background: var(--text-light);
+            color: var(--bg-dark);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            background: var(--accent);
+            color: var(--bg-dark);
+        }
+
+        /* Mobile hamburger menu */
+        .mobile-toggle {
+            display: none;
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1rem;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+        }
+
+        .mobile-toggle span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background: var(--text-light);
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .title-overlay {
+                top: 3rem;
+                transform: translate(-50%, 0);
+            }
+
+            .site-title {
+                font-size: 2.5rem;
+            }
+
+            nav {
+                position: fixed;
+                bottom: -100%;
+                height: auto;
+                max-height: 80vh;
+                overflow-y: auto;
+                transition: bottom 0.4s ease;
+            }
+
+            nav.active {
+                bottom: 0;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .nav-content {
+                flex-direction: column;
+                padding-top: 2rem;
+            }
+
+            .nav-section {
+                width: 100%;
+            }
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Waitlist Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #1a1a1a;
+            padding: 3rem;
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 2rem;
+            cursor: pointer;
+            line-height: 1;
+            padding: 0.5rem;
+        }
+
+        .modal h2 {
+            font-size: 2rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .modal p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .form-input::placeholder {
+            color: var(--text-muted);
+            opacity: 0.6;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 1rem;
+            background: var(--text-light);
+            color: var(--bg-dark);
+            border: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .submit-button:hover {
+            background: var(--accent);
+        }
+
+        .form-message {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .form-message.success {
+            background: rgba(76, 175, 80, 0.2);
+            border: 1px solid rgba(76, 175, 80, 0.5);
+            color: #4caf50;
+            display: block;
+        }
+
+        .form-message.error {
+            background: rgba(244, 67, 54, 0.2);
+            border: 1px solid rgba(244, 67, 54, 0.5);
+            color: #f44336;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Mobile Menu Toggle -->
+    <div class="mobile-toggle" id="mobileToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- Large Title Overlay -->
+    <div class="title-overlay">
+        <h1 class="site-title">SWAMP NEEDLE</h1>
+    </div>
+
+    <!-- Single Hero Image -->
+    <div class="hero-image">
+        <img src="swamp-needle-hero.png" alt="Swamp Needle vinyl bar interior with vintage speakers and record collection">
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav id="mainNav">
+        <div class="nav-content">
+            <!-- About Section -->
+            <div class="nav-section">
+                <h3>#</h3>
+                <p class="description">
+                    Tucked away in New Orleans' Irish Channel, Swamp Needle is your secret spot for vinyl listening and craft cocktails. Come for the rare records, stay for the immersive sound. Perfect for late-night sessions or evening drinks with a twist.
+                </p>
+            </div>
+
+            <!-- Links Section -->
+            <div class="nav-section">
+                <h3>Links</h3>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#" id="waitlistLink">Join Waitlist</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="https://instagram.com/swampneedlenola" target="_blank">Instagram</a></li>
+                </ul>
+            </div>
+
+            <!-- Hours & Location -->
+            <div class="nav-section">
+                <h3>Hours</h3>
+                <p class="hours">OPENING 2026</p>
+                <p class="hours">WED — SUN<br>6:00 PM — 2:00 AM</p>
+                
+                <address class="address">
+                    Irish Channel<br>
+                    New Orleans, LA 70115<br>
+                    United States
+                </address>
+
+                <a href="#" class="cta-button" id="reserveBtn">Join the Waitlist</a>
+            </div>
+
+            <!-- Contact -->
+            <div class="nav-section">
+                <h3>Contact</h3>
+                <p class="hours">General Inquiries<br>
+                <a href="/cdn-cgi/l/email-protection#167e737a7a79566561777b66787373727a733875797b" style="color: var(--text-light); text-decoration: none;"><span class="__cf_email__" data-cfemail="452d2029292a0536322428352b20202129206b262a28">[email&#160;protected]</span></a></p>
+                
+                <p class="hours">Private Events<br>
+                <a href="/cdn-cgi/l/email-protection#e7829182899394a79490868a97898282838b82c984888a" style="color: var(--text-light); text-decoration: none;"><span class="__cf_email__" data-cfemail="56332033382225162521373b26383333323a337835393b">[email&#160;protected]</span></a></p>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Waitlist Modal -->
+    <div class="modal" id="waitlistModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <h2>Join the Waitlist</h2>
+            <p>Be the first to know when we open our doors. Waitlist members receive exclusive updates, priority reservations, and an invitation to our opening night.</p>
+            
+            <form id="waitlistForm">
+                <div class="form-group">
+                    <input type="text" class="form-input" placeholder="First Name" name="firstName" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-input" placeholder="Last Name" name="lastName" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-input" placeholder="Email Address" name="email" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" class="form-input" placeholder="Phone (Optional)" name="phone">
+                </div>
+                <button type="submit" class="submit-button">Join Waitlist</button>
+                <div class="form-message" id="formMessage"></div>
+            </form>
+        </div>
+    </div>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const mainNav = document.getElementById('mainNav');
+
+        mobileToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            mobileToggle.classList.toggle('active');
+        });
+
+        // Waitlist modal
+        const waitlistModal = document.getElementById('waitlistModal');
+        const waitlistLink = document.getElementById('waitlistLink');
+        const reserveBtn = document.getElementById('reserveBtn');
+        const modalClose = document.getElementById('modalClose');
+
+        function openModal(e) {
+            e.preventDefault();
+            waitlistModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            waitlistModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        waitlistLink.addEventListener('click', openModal);
+        reserveBtn.addEventListener('click', openModal);
+        modalClose.addEventListener('click', closeModal);
+
+        waitlistModal.addEventListener('click', (e) => {
+            if (e.target === waitlistModal) {
+                closeModal();
+            }
+        });
+
+        // Form submission
+        const waitlistForm = document.getElementById('waitlistForm');
+        const formMessage = document.getElementById('formMessage');
+
+        waitlistForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(waitlistForm);
+            const data = {
+                firstName: formData.get('firstName'),
+                lastName: formData.get('lastName'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                timestamp: new Date().toISOString(),
+                source: 'website'
+            };
+
+            try {
+                // Replace with your actual form endpoint
+                // Example: Mailchimp, ConvertKit, Google Forms, etc.
+                
+                formMessage.textContent = 'Welcome to the list! Check your email for confirmation.';
+                formMessage.className = 'form-message success';
+                waitlistForm.reset();
+
+                setTimeout(() => {
+                    closeModal();
+                    formMessage.style.display = 'none';
+                }, 3000);
+
+                console.log('Waitlist submission:', data);
+
+            } catch (error) {
+                formMessage.textContent = 'Something went wrong. Please try again.';
+                formMessage.className = 'form-message error';
+                console.error('Form submission error:', error);
+            }
+        });
+
+        // Subtle parallax effect on scroll
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const scrolled
